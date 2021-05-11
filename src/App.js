@@ -5,16 +5,25 @@ import './App.css';
 
 function App() {
   return (
-    <div className='container'>
-      <header className='todo-header'>
-        <h1 className='heading'>TODO App</h1>
-        <ThemeToggle />
-        <TodoInput />
-      </header>
+    <>
+      <div
+        className='app-header'
+        style={{ backgroundImage: 'url(/images/bg-desktop-light.jpg)' }}
+      >
+        <div className='container'>
+          <header className='todo-header'>
+            <h1 className='heading'>TODO App</h1>
+            <ThemeToggle />
+            <TodoInput />
+          </header>
+        </div>
+      </div>
       <main className='todo-main'>
-        <TodoList />
+        <div className='container'>
+          <TodoList />
+        </div>
       </main>
-    </div>
+    </>
   );
 }
 

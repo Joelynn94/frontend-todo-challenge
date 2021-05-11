@@ -155,7 +155,7 @@ CUSTOM CSS
 button {
   cursor: pointer;
   display: inline-block;
-  color: #212529;
+  color: #9495a5;
   text-align: center;
   background-color: transparent;
   border: 1px solid transparent;
@@ -168,6 +168,7 @@ button {
 }
 
 body {
+  color: #9495a5;
   background-color: #fafafa;
 }
 
@@ -180,20 +181,19 @@ body {
     'input input';
   justify-content: center;
   align-items: center;
-  padding: 80px;
-  background-color: grey;
+  padding: 80px 0;
 }
 
 .todo-main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 80px 0 80px;
 }
 
 .heading {
   grid-area: heading;
   font-size: 40px;
+  color: #ffffff;
 }
 
 .toggle {
@@ -237,13 +237,14 @@ body {
   margin-top: -35px;
   border-radius: 0.25rem;
   background-color: #fff;
+  box-shadow: 10px 10px 50px #c2c3d6;
 }
 
 .todo-item {
   grid-area: todo-item;
   display: flex;
   align-items: center;
-  padding: 10px 24px;
+  padding: 20px 24px;
   border-bottom: 1px solid #e3e4f1;
 }
 
@@ -251,42 +252,48 @@ body {
   width: 100%;
   grid-area: todo-filters;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-areas: 'text text . all active completed . clear clear clear';
+  grid-template-areas: 'text text all active completed clear clear';
   align-items: center;
-  padding: 24px 10px;
+  padding: 10px;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.todo-filters__text,
+.todo-filters__all,
+.todo-filters__active,
+.todo-filters__completed,
+.todo-filters__clear {
   font-size: 14px;
+  padding: 0;
+}
+
+.todo-filters__all,
+.todo-filters__active,
+.todo-filters__completed {
+  font-weight: bold;
 }
 
 .todo-filters__text {
   grid-area: text;
-  font-size: 14px;
-  padding: 0;
 }
 
 .todo-filters__all {
   grid-area: all;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 0;
 }
 
 .todo-filters__active {
   grid-area: active;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 0;
 }
 
 .todo-filters__completed {
   grid-area: completed;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 0;
 }
 
 .todo-filters__clear {
   grid-area: clear;
-  font-size: 14px;
-  padding: 0;
+}
+
+.active-link {
+  color: #3a7cfd;
 }
