@@ -1,9 +1,15 @@
 import React from 'react';
 
-const TodoInput = () => {
+const TodoInput = ({ todo, onInputChange }) => {
   return (
     <form className='todo-input'>
-      <input type='text' placeholder='Create a new todo' />
+      <input
+        name='todo'
+        type='text'
+        placeholder='Create a new todo'
+        value={todo}
+        onChange={onInputChange}
+      />
     </form>
   );
 };

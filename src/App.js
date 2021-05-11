@@ -23,6 +23,10 @@ function App() {
     }
   }
 
+  function handleInputChange(e) {
+    setTodo(e.target.value);
+  }
+
   return (
     <>
       <div
@@ -37,7 +41,7 @@ function App() {
           <header className='todo-header'>
             <h1 className='heading'>TODO App</h1>
             <ThemeToggle theme={theme} onThemeChange={handleThemeChange} />
-            <TodoInput />
+            <TodoInput todo={todo} onInputChange={handleInputChange} />
           </header>
         </div>
       </div>
