@@ -2,7 +2,7 @@ import React from 'react';
 
 const ThemeToggle = () => {
   return (
-    <div>
+    <div className='toggle'>
       <button>Toggle Theme</button>
     </div>
   );
