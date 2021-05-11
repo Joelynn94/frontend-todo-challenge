@@ -27,6 +27,19 @@ function App() {
     setTodo(e.target.value);
   }
 
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    setTodos([
+      ...todos,
+      {
+        id: todos.length + 1,
+        todo,
+      },
+    ]);
+    setTodo('');
+  }
+
   return (
     <>
       <div
@@ -41,7 +54,11 @@ function App() {
           <header className='todo-header'>
             <h1 className='heading'>TODO App</h1>
             <ThemeToggle theme={theme} onThemeChange={handleThemeChange} />
-            <TodoInput todo={todo} onInputChange={handleInputChange} />
+            <TodoInput
+              onFormSubmit={handleFormSubmit}
+              todo={todo}
+              onInputChange={handleInputChange}
+            />
           </header>
         </div>
       </div>
