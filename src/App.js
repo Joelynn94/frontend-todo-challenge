@@ -1,20 +1,16 @@
-import { Fragment } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container';
-
-import InputTodo from "./components/InputTodo"
-import ListTodo from "./components/ListTodo"
+import ThemeToggle from './components/ThemeToggle/ThemeToggle';
+import TodoInput from './components/TodoInput/TodoInput';
+import TodoList from './components/TodoList/TodoList';
 
 function App() {
   return (
-    <>
-      <Container>
-        <h1>PERN Todo App</h1>
-        <InputTodo />
-        <ListTodo />
-      </Container>
-    </>
+    <div className='App'>
+      <h1>TODO App</h1>
+      <ThemeToggle />
+      <TodoInput />
+      <TodoList />
+    </div>
   );
 }
 

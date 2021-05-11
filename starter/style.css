@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+}
+
+header {
+  background-image: url(./images/bg-desktop-light.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.heading h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
