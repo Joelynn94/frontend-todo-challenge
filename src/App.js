@@ -16,8 +16,10 @@ function App() {
   function handleThemeChange() {
     if (theme === 'light') {
       setTheme('dark');
+      document.body.style.backgroundColor = '#171823';
     } else {
       setTheme('light');
+      document.body.style.backgroundColor = '#fff';
     }
   }
 
@@ -25,7 +27,11 @@ function App() {
     <>
       <div
         className='app-header'
-        style={{ backgroundImage: 'url(/images/bg-desktop-light.jpg)' }}
+        style={
+          theme === 'light'
+            ? { backgroundImage: 'url(/images/bg-desktop-light.jpg)' }
+            : { backgroundImage: 'url(/images/bg-desktop-dark.jpg)' }
+        }
       >
         <div className='container'>
           <header className='todo-header'>
