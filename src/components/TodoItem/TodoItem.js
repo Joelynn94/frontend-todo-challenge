@@ -2,8 +2,8 @@ import React from 'react';
 
 const TodoItem = () => {
   return (
-    <li>
-      <button></button>
+    <li className='todo-item'>
+      <button className='todo-btn'></button>
       <p>TODO Item</p>
     </li>
   );
