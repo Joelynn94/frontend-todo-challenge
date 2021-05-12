@@ -72,6 +72,13 @@ function App() {
     setActiveLink('completed');
   }
 
+  function clearCompletedTodos() {
+    const clear = todos.filter((todo) => {
+      return todo.isCompleted !== true;
+    });
+    setTodos(clear);
+  }
+
   return (
     <>
       <div
@@ -104,6 +111,7 @@ function App() {
             onShowCompletedTodos={showCompletedTodos}
             onCompleteTodo={completeTodo}
             onRemoveTodo={removeTodo}
+            onClearCompletedTodos={clearCompletedTodos}
           />
         </div>
       </main>

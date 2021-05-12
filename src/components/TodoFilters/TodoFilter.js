@@ -2,11 +2,13 @@ import React from 'react';
 
 const TodoFilter = ({
   todos,
+  filtered,
   onShowAllTodos,
   onShowActiveTodos,
   onShowCompletedTodos,
   onCompleteTodo,
   onRemoveTodo,
+  onClearCompletedTodos,
 }) => {
   return (
     <div className='todo-filters'>
@@ -30,7 +32,9 @@ const TodoFilter = ({
       >
         Completed
       </button>
-      <button className='todo-filters__clear'>Clear Completed</button>
+      <button className='todo-filters__clear' onClick={onClearCompletedTodos}>
+        Clear Completed
+      </button>
     </div>
   );
 };

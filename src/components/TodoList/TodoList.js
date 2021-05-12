@@ -10,6 +10,7 @@ const TodoList = ({
   onShowCompletedTodos,
   onCompleteTodo,
   onRemoveTodo,
+  onClearCompletedTodos,
 }) => {
   console.log(todos);
   return (
@@ -25,6 +26,7 @@ const TodoList = ({
         onShowCompletedTodos={onShowCompletedTodos}
         onCompleteTodo={onCompleteTodo}
         onRemoveTodo={onRemoveTodo}
+        onClearCompletedTodos={onClearCompletedTodos}
       />
     </ul>
   );
