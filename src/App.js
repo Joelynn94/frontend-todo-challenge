@@ -15,7 +15,28 @@ function App() {
   // useEffect to update the UI
   useEffect(() => {
     filterHandler();
-  }, [todos, status]);
+    getLocalStorage();
+    saveLocalStorage();
+  }, [todos, status, theme]);
+
+  function saveLocalStorage() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+    localStorage.setItem('theme', JSON.stringify(theme));
+  }
+
+  function getLocalStorage() {
+    if (localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]));
+    } else {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
+
+    if (localStorage.getItem('theme') === null) {
+      localStorage.setItem('theme', JSON.stringify(''));
+    } else {
+      localStorage.setItem('theme', JSON.stringify(theme));
+    }
+  }
 
   function handleThemeChange() {
     if (theme === 'light') {
