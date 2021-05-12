@@ -217,13 +217,17 @@ body {
   margin-right: 14px;
 }
 
+.todo-completed .todo-btn {
+  background: linear-gradient(to right bottom, #55ddff, #c058f3);
+  border: 1px solid #fff;
+}
+
+.todo-completed p {
+  text-decoration: line-through;
+}
+
 .todo-list {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    'todo-item todo-item'
-    'todo-filters todo-filters';
   margin-top: -35px;
   border-radius: 0.25rem;
   background-color: #fff;
@@ -231,7 +235,6 @@ body {
 }
 
 .todo-item {
-  grid-area: todo-item;
   display: flex;
   align-items: center;
   padding: 20px 24px;

@@ -7,11 +7,9 @@ import './App.css';
 
 function App() {
   const [theme, setTheme] = useState('light');
-  const [bgImage, setbgImage] = useState('');
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
-  const [isActive, setIsActive] = useState([]);
-  const [isCompleted, setIsCompleted] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
   function handleThemeChange() {
     if (theme === 'light') {
@@ -34,10 +32,40 @@ function App() {
       ...todos,
       {
         id: todos.length + 1,
-        todo,
+        text: todo,
+        isCompleted: false,
+        isActive: true,
       },
     ]);
     setTodo('');
+  }
+
+  function changeCompletedTodo(id) {
+    const completed = todos.map((todo) => {
+      return todo.id === id
+        ? { ...todo, isCompleted: !todo.isCompleted, isActive: !todo.isActive }
+        : todo;
+    });
+    setTodos(completed);
+  }
+
+  function removeItem(id) {
+    const remove = todos.map((todo) => {
+      return todo.id !== id;
+    });
+    setTodos(remove);
+  }
+
+  function showAllTodos() {
+    setFiltered(todos);
+  }
+
+  function showActiveTodos(todos) {
+    setFiltered(todos.filter((todo) => todo.isActive));
+  }
+
+  function showCompletedTodos(todos) {
+    setFiltered(todos.filter((todo) => todo.isCompleted));
   }
 
   return (
@@ -64,7 +92,12 @@ function App() {
       </div>
       <main className='todo-main'>
         <div className='container'>
-          <TodoList />
+          <TodoList
+            todos={todos}
+            onFilterActiveTodos={filterActiveTodos}
+            onFilterCompletedTodos={filterCompletedTodos}
+            onChangeCompletedTodo={changeCompletedTodo}
+          />
         </div>
       </main>
     </>

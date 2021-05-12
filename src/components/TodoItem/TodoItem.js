@@ -1,10 +1,13 @@
 import React from 'react';
 
-const TodoItem = () => {
+const TodoItem = ({ todo, onChangeCompletedTodo }) => {
   return (
-    <li className='todo-item'>
-      <button className='todo-btn'></button>
-      <span>TODO Item</span>
+    <li className={todo.isCompleted ? 'todo-item todo-completed' : 'todo-item'}>
+      <button
+        className='todo-btn'
+        onClick={() => onChangeCompletedTodo(todo.id)}
+      ></button>
+      <p>{todo.text}</p>
     </li>
   );
 };
