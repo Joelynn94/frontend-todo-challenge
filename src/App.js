@@ -19,11 +19,13 @@ function App() {
     saveLocalStorage();
   }, [todos, status, theme]);
 
+  // save theme and todos to local storage
   function saveLocalStorage() {
     localStorage.setItem('todos', JSON.stringify(todos));
     localStorage.setItem('theme', JSON.stringify(theme));
   }
 
+  // get theme and todos from local storage
   function getLocalStorage() {
     if (localStorage.getItem('todos') === null) {
       localStorage.setItem('todos', JSON.stringify([]));
@@ -38,6 +40,7 @@ function App() {
     }
   }
 
+  // add and remove light/dark class to the document body
   function handleThemeChange() {
     if (theme === 'light') {
       setTheme('dark');
@@ -50,25 +53,30 @@ function App() {
     }
   }
 
+  // handle the todo input change
   function handleInputChange(e) {
-    setTodo(e.target.value);
+    setTodo(e.target.value.trim());
   }
 
+  // handle when user submits inside the input
   function handleFormSubmit(e) {
     e.preventDefault();
 
-    setTodos([
-      ...todos,
-      {
-        id: todos.length + 1,
-        text: todo,
-        isCompleted: false,
-        isActive: true,
-      },
-    ]);
+    if (todo !== '') {
+      setTodos([
+        ...todos,
+        {
+          id: todos.length + 1,
+          text: todo,
+          isCompleted: false,
+          isActive: true,
+        },
+      ]);
+    }
     setTodo('');
   }
 
+  // change a todo's status i.e. complete and active status to the opposite of what they were previously
   function completeTodo(id) {
     const completed = todos.map((todo) => {
       return todo.id === id
@@ -78,6 +86,7 @@ function App() {
     setTodos(completed);
   }
 
+  // remove a todo based in the id that was clicked
   function removeTodo(id) {
     const removed = todos.filter((todo) => {
       return todo.id !== id;
@@ -86,21 +95,25 @@ function App() {
     setTodos(removed);
   }
 
+  // show all of the todos
   function showAllTodos() {
     setFiltered(todos);
     setStatus('all');
   }
 
+  // show only todos that are active
   function showActiveTodos() {
     setFiltered(todos.filter((todo) => todo.isActive));
     setStatus('active');
   }
 
+  // show only todos that are completed
   function showCompletedTodos() {
     setFiltered(todos.filter((todo) => todo.isCompleted));
     setStatus('completed');
   }
 
+  // clear all of the completed todos
   function clearCompletedTodos() {
     const clear = todos.filter((todo) => {
       return todo.isCompleted !== true;
@@ -108,6 +121,7 @@ function App() {
     setTodos(clear);
   }
 
+  // function to handle the different statuses
   function filterHandler() {
     switch (status) {
       case 'active':

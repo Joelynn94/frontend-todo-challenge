@@ -28,8 +28,6 @@ const TodoList = ({
         onShowAllTodos={onShowAllTodos}
         onShowActiveTodos={onShowActiveTodos}
         onShowCompletedTodos={onShowCompletedTodos}
-        onCompleteTodo={onCompleteTodo}
-        onRemoveTodo={onRemoveTodo}
         onClearCompletedTodos={onClearCompletedTodos}
       />
     </ul>
