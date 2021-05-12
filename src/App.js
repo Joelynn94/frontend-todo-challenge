@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
 import TodoInput from './components/TodoInput/TodoInput';
@@ -10,7 +10,12 @@ function App() {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [activeLink, setActiveLink] = useState('all');
+  const [status, setStatus] = useState('all');
+
+  // useEffect to update the UI
+  useEffect(() => {
+    filterHandler();
+  }, [todos, status]);
 
   function handleThemeChange() {
     if (theme === 'light') {
@@ -59,17 +64,17 @@ function App() {
 
   function showAllTodos() {
     setFiltered(todos);
-    setActiveLink('all');
+    setStatus('all');
   }
 
   function showActiveTodos() {
     setFiltered(todos.filter((todo) => todo.isActive));
-    setActiveLink('active');
+    setStatus('active');
   }
 
   function showCompletedTodos() {
     setFiltered(todos.filter((todo) => todo.isCompleted));
-    setActiveLink('completed');
+    setStatus('completed');
   }
 
   function clearCompletedTodos() {
@@ -77,6 +82,20 @@ function App() {
       return todo.isCompleted !== true;
     });
     setTodos(clear);
+  }
+
+  function filterHandler() {
+    switch (status) {
+      case 'active':
+        showActiveTodos();
+        break;
+      case 'completed':
+        showCompletedTodos();
+        break;
+      default:
+        showAllTodos();
+        break;
+    }
   }
 
   return (
@@ -106,7 +125,7 @@ function App() {
           <TodoList
             todos={todos}
             filtered={filtered}
-            activeLink={activeLink}
+            status={status}
             onShowAllTodos={showAllTodos}
             onShowActiveTodos={showActiveTodos}
             onShowCompletedTodos={showCompletedTodos}

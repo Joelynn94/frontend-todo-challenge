@@ -1,9 +1,8 @@
 import React from 'react';
 
 const TodoFilter = ({
-  todos,
   filtered,
-  activeLink,
+  status,
   onShowAllTodos,
   onShowActiveTodos,
   onShowCompletedTodos,
@@ -14,13 +13,13 @@ const TodoFilter = ({
   return (
     <div className='todo-filters'>
       <span className='todo-filters__text'>
-        {todos.length > 0
-          ? `${todos.length} items left`
-          : `${todos.length} item left`}
+        {filtered.length > 1
+          ? `${filtered.length} items left`
+          : `${filtered.length} item left`}
       </span>
       <button
         className={
-          activeLink === 'all'
+          status === 'all'
             ? 'todo-filters__all active-link'
             : 'todo-filters__all'
         }
@@ -30,7 +29,7 @@ const TodoFilter = ({
       </button>
       <button
         className={
-          activeLink === 'active'
+          status === 'active'
             ? 'todo-filters__active active-link'
             : 'todo-filters__active '
         }
@@ -40,7 +39,7 @@ const TodoFilter = ({
       </button>
       <button
         className={
-          activeLink === 'completed'
+          status === 'completed'
             ? 'todo-filters__completed active-link'
             : 'todo-filters__completed'
         }

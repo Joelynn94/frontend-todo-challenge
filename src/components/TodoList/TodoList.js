@@ -5,7 +5,7 @@ import TodoItem from '../TodoItem/TodoItem';
 const TodoList = ({
   todos,
   filtered,
-  activeLink,
+  status,
   onShowAllTodos,
   onShowActiveTodos,
   onShowCompletedTodos,
@@ -16,13 +16,13 @@ const TodoList = ({
   console.log(todos);
   return (
     <ul className='todo-list'>
-      {todos.map((todo) => (
+      {filtered.map((todo) => (
         <TodoItem key={todo.id} todo={todo} onCompleteTodo={onCompleteTodo} />
       ))}
       <TodoFilter
         todos={todos}
         filtered={filtered}
-        activeLink={activeLink}
+        status={status}
         onShowAllTodos={onShowAllTodos}
         onShowActiveTodos={onShowActiveTodos}
         onShowCompletedTodos={onShowCompletedTodos}
