@@ -1,6 +1,13 @@
 import React from 'react';
 
-const TodoFilter = ({ todos, onFilterActiveTodos, onFilterCompletedTodos }) => {
+const TodoFilter = ({
+  todos,
+  onShowAllTodos,
+  onShowActiveTodos,
+  onShowCompletedTodos,
+  onCompleteTodo,
+  onRemoveTodo,
+}) => {
   return (
     <div className='todo-filters'>
       <span className='todo-filters__text'>
@@ -8,18 +15,18 @@ const TodoFilter = ({ todos, onFilterActiveTodos, onFilterCompletedTodos }) => {
           ? `${todos.length} items left`
           : `${todos.length} item left`}
       </span>
-      <button className='todo-filters__all active-link' onClick={() => true}>
+      <button
+        className='todo-filters__all active-link'
+        onClick={onShowAllTodos}
+      >
         All
       </button>
-      <button
-        className='todo-filters__active'
-        onClick={() => onFilterActiveTodos(todos)}
-      >
+      <button className='todo-filters__active' onClick={onShowActiveTodos}>
         Active
       </button>
       <button
         className='todo-filters__completed'
-        onClick={() => onFilterCompletedTodos(todos)}
+        onClick={onShowCompletedTodos}
       >
         Completed
       </button>

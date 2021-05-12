@@ -4,21 +4,27 @@ import TodoItem from '../TodoItem/TodoItem';
 
 const TodoList = ({
   todos,
-  onFilterActiveTodos,
-  onFilterCompletedTodos,
-  onChangeCompletedTodo,
+  filtered,
+  onShowAllTodos,
+  onShowActiveTodos,
+  onShowCompletedTodos,
+  onCompleteTodo,
+  onRemoveTodo,
 }) => {
   console.log(todos);
   return (
     <ul className='todo-list'>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
+        <TodoItem key={todo.id} todo={todo} onCompleteTodo={onCompleteTodo} />
       ))}
       <TodoFilter
         todos={todos}
-        onFilterActiveTodos={onFilterActiveTodos}
-        onFilterCompletedTodos={onFilterCompletedTodos}
-        onChangeCompletedTodo={onChangeCompletedTodo}
+        filtered={filtered}
+        onShowAllTodos={onShowAllTodos}
+        onShowActiveTodos={onShowActiveTodos}
+        onShowCompletedTodos={onShowCompletedTodos}
+        onCompleteTodo={onCompleteTodo}
+        onRemoveTodo={onRemoveTodo}
       />
     </ul>
   );

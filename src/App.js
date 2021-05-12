@@ -10,6 +10,7 @@ function App() {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [activeLink, setActiveLink] = useState('all');
 
   function handleThemeChange() {
     if (theme === 'light') {
@@ -40,7 +41,7 @@ function App() {
     setTodo('');
   }
 
-  function changeCompletedTodo(id) {
+  function completeTodo(id) {
     const completed = todos.map((todo) => {
       return todo.id === id
         ? { ...todo, isCompleted: !todo.isCompleted, isActive: !todo.isActive }
@@ -49,7 +50,7 @@ function App() {
     setTodos(completed);
   }
 
-  function removeItem(id) {
+  function removeTodo(id) {
     const remove = todos.map((todo) => {
       return todo.id !== id;
     });
@@ -58,14 +59,17 @@ function App() {
 
   function showAllTodos() {
     setFiltered(todos);
+    setActiveLink('all');
   }
 
-  function showActiveTodos(todos) {
+  function showActiveTodos() {
     setFiltered(todos.filter((todo) => todo.isActive));
+    setActiveLink('active');
   }
 
-  function showCompletedTodos(todos) {
+  function showCompletedTodos() {
     setFiltered(todos.filter((todo) => todo.isCompleted));
+    setActiveLink('completed');
   }
 
   return (
@@ -94,9 +98,12 @@ function App() {
         <div className='container'>
           <TodoList
             todos={todos}
-            onFilterActiveTodos={filterActiveTodos}
-            onFilterCompletedTodos={filterCompletedTodos}
-            onChangeCompletedTodo={changeCompletedTodo}
+            filtered={filtered}
+            onShowAllTodos={showAllTodos}
+            onShowActiveTodos={showActiveTodos}
+            onShowCompletedTodos={showCompletedTodos}
+            onCompleteTodo={completeTodo}
+            onRemoveTodo={removeTodo}
           />
         </div>
       </main>
