@@ -18,6 +18,9 @@
 .env.test.local
 .env.production.local
 .eslintcache
+/design
+/starter
+*.xd
 
 npm-debug.log*
 yarn-debug.log*
