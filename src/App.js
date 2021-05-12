@@ -106,6 +106,7 @@ function App() {
           <TodoList
             todos={todos}
             filtered={filtered}
+            activeLink={activeLink}
             onShowAllTodos={showAllTodos}
             onShowActiveTodos={showActiveTodos}
             onShowCompletedTodos={showCompletedTodos}

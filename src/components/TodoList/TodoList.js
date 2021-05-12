@@ -5,6 +5,7 @@ import TodoItem from '../TodoItem/TodoItem';
 const TodoList = ({
   todos,
   filtered,
+  activeLink,
   onShowAllTodos,
   onShowActiveTodos,
   onShowCompletedTodos,
@@ -21,6 +22,7 @@ const TodoList = ({
       <TodoFilter
         todos={todos}
         filtered={filtered}
+        activeLink={activeLink}
         onShowAllTodos={onShowAllTodos}
         onShowActiveTodos={onShowActiveTodos}
         onShowCompletedTodos={onShowCompletedTodos}

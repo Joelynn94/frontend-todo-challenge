@@ -3,6 +3,7 @@ import React from 'react';
 const TodoFilter = ({
   todos,
   filtered,
+  activeLink,
   onShowAllTodos,
   onShowActiveTodos,
   onShowCompletedTodos,
@@ -18,16 +19,31 @@ const TodoFilter = ({
           : `${todos.length} item left`}
       </span>
       <button
-        className='todo-filters__all active-link'
+        className={
+          activeLink === 'all'
+            ? 'todo-filters__all active-link'
+            : 'todo-filters__all'
+        }
         onClick={onShowAllTodos}
       >
         All
       </button>
-      <button className='todo-filters__active' onClick={onShowActiveTodos}>
+      <button
+        className={
+          activeLink === 'active'
+            ? 'todo-filters__active active-link'
+            : 'todo-filters__active '
+        }
+        onClick={onShowActiveTodos}
+      >
         Active
       </button>
       <button
-        className='todo-filters__completed'
+        className={
+          activeLink === 'completed'
+            ? 'todo-filters__completed active-link'
+            : 'todo-filters__completed'
+        }
         onClick={onShowCompletedTodos}
       >
         Completed
