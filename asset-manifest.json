@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/frontend-todo-challenge/static/css/main.e7f28bbc.chunk.css",
+    "main.js": "/frontend-todo-challenge/static/js/main.c99ba6f7.chunk.js",
+    "main.js.map": "/frontend-todo-challenge/static/js/main.c99ba6f7.chunk.js.map",
+    "runtime-main.js": "/frontend-todo-challenge/static/js/runtime-main.aaac4505.js",
+    "runtime-main.js.map": "/frontend-todo-challenge/static/js/runtime-main.aaac4505.js.map",
+    "static/js/2.171bfe50.chunk.js": "/frontend-todo-challenge/static/js/2.171bfe50.chunk.js",
+    "static/js/2.171bfe50.chunk.js.map": "/frontend-todo-challenge/static/js/2.171bfe50.chunk.js.map",
+    "index.html": "/frontend-todo-challenge/index.html",
+    "static/css/main.e7f28bbc.chunk.css.map": "/frontend-todo-challenge/static/css/main.e7f28bbc.chunk.css.map",
+    "static/js/2.171bfe50.chunk.js.LICENSE.txt": "/frontend-todo-challenge/static/js/2.171bfe50.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aaac4505.js",
+    "static/js/2.171bfe50.chunk.js",
+    "static/css/main.e7f28bbc.chunk.css",
+    "static/js/main.c99ba6f7.chunk.js"
+  ]
+}
