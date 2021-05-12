@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;700&display=swap');
 /**********
 CSS RESET 
 **********/
@@ -115,6 +116,10 @@ table {
 /**********
 CUSTOM CSS 
 **********/
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 .container {
   width: 100%;
   padding-right: 15px;
@@ -157,9 +162,14 @@ button {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-body {
-  color: #9495a5;
+.light {
+  color: #393a4b;
   background-color: #fafafa;
+}
+
+.dark {
+  color: #c8cbe7;
+  background-color: #171823;
 }
 
 .todo-header {
@@ -209,6 +219,11 @@ body {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.dark .todo-input input {
+  background-color: #25273d;
+  border: 1px solid #1f2133;
+}
+
 .todo-btn {
   border-radius: 50%;
   height: 24px;
@@ -217,13 +232,47 @@ body {
   margin-right: 14px;
 }
 
+.todo-btn:hover {
+  border: 1px solid #707070;
+}
+
+.todo-btn__check {
+  display: grid;
+  justify-content: center;
+}
+
 .todo-completed .todo-btn {
   background: linear-gradient(to right bottom, #55ddff, #c058f3);
   border: 1px solid #fff;
 }
 
-.todo-completed p {
+.dark .todo-completed .todo-btn {
+  background: linear-gradient(to right bottom, #55ddff, #c058f3);
+  border: 1px solid #25273d;
+}
+
+.todo-delete {
+  height: 24px;
+  width: 24px;
+  padding: 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex: auto 1;
+}
+
+.todo-delete__x {
+  display: grid;
+  justify-content: center;
+}
+
+.todo-completed {
   text-decoration: line-through;
+  color: #d1d2da;
+}
+
+.dark .todo-completed {
+  color: #4d5067;
 }
 
 .todo-list {
@@ -234,11 +283,20 @@ body {
   box-shadow: 0px 0px 35px #c2c3d6;
 }
 
+.dark .todo-list {
+  background-color: #25273d;
+  box-shadow: 0px 0px 35px #000;
+}
+
 .todo-item {
   display: flex;
   align-items: center;
   padding: 20px 24px;
   border-bottom: 1px solid #e3e4f1;
+}
+
+.dark .todo-item {
+  border-bottom: 1px solid #393a4b;
 }
 
 .todo-filters {

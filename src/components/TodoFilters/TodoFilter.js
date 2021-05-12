@@ -6,16 +6,14 @@ const TodoFilter = ({
   onShowAllTodos,
   onShowActiveTodos,
   onShowCompletedTodos,
-  onCompleteTodo,
-  onRemoveTodo,
   onClearCompletedTodos,
 }) => {
   return (
     <div className='todo-filters'>
       <span className='todo-filters__text'>
-        {filtered.length > 1
-          ? `${filtered.length} items left`
-          : `${filtered.length} item left`}
+        {filtered.length === 1
+          ? `${filtered.length} item left`
+          : `${filtered.length} items left`}
       </span>
       <button
         className={

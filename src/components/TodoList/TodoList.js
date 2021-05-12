@@ -3,7 +3,6 @@ import TodoFilter from '../TodoFilters/TodoFilter';
 import TodoItem from '../TodoItem/TodoItem';
 
 const TodoList = ({
-  todos,
   filtered,
   status,
   onShowAllTodos,
@@ -13,14 +12,17 @@ const TodoList = ({
   onRemoveTodo,
   onClearCompletedTodos,
 }) => {
-  console.log(todos);
   return (
     <ul className='todo-list'>
       {filtered.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} onCompleteTodo={onCompleteTodo} />
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onCompleteTodo={onCompleteTodo}
+          onRemoveTodo={onRemoveTodo}
+        />
       ))}
       <TodoFilter
-        todos={todos}
         filtered={filtered}
         status={status}
         onShowAllTodos={onShowAllTodos}

@@ -9,8 +9,8 @@ function App() {
   const [theme, setTheme] = useState('light');
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
-  const [filtered, setFiltered] = useState([]);
   const [status, setStatus] = useState('all');
+  const [filtered, setFiltered] = useState([]);
 
   // useEffect to update the UI
   useEffect(() => {
@@ -20,10 +20,12 @@ function App() {
   function handleThemeChange() {
     if (theme === 'light') {
       setTheme('dark');
-      document.body.style.backgroundColor = '#171823';
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
     } else {
       setTheme('light');
-      document.body.style.backgroundColor = '#fff';
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
     }
   }
 
@@ -56,10 +58,11 @@ function App() {
   }
 
   function removeTodo(id) {
-    const remove = todos.map((todo) => {
+    const removed = todos.filter((todo) => {
       return todo.id !== id;
     });
-    setTodos(remove);
+    console.log(todo);
+    setTodos(removed);
   }
 
   function showAllTodos() {
