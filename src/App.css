@@ -198,7 +198,7 @@ button {
 
 .toggle {
   grid-area: toggle;
-  justify-self: end;
+  justify-self: flex-end;
 }
 
 .todo-input {
@@ -256,7 +256,7 @@ button {
   width: 24px;
   padding: 0;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   flex: auto 1;
 }

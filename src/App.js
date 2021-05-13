@@ -92,7 +92,6 @@ function App() {
     const removed = todos.filter((todo) => {
       return todo.id !== id;
     });
-    console.log(todo);
     setTodos(removed);
   }
 
