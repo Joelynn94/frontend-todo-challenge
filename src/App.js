@@ -148,7 +148,7 @@ function App() {
       >
         <div className='container'>
           <header className='todo-header'>
-            <h1 className='heading'>TODO App</h1>
+            <h1 className='heading'>TODO APP</h1>
             <ThemeToggle theme={theme} onThemeChange={handleThemeChange} />
             <TodoInput
               onFormSubmit={handleFormSubmit}
