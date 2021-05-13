@@ -1,17 +1,7 @@
 import React from 'react';
-import TodoFilter from '../TodoFilters/TodoFilter';
 import TodoItem from '../TodoItem/TodoItem';
 
-const TodoList = ({
-  filtered,
-  status,
-  onShowAllTodos,
-  onShowActiveTodos,
-  onShowCompletedTodos,
-  onCompleteTodo,
-  onRemoveTodo,
-  onClearCompletedTodos,
-}) => {
+const TodoList = ({ filtered, onCompleteTodo, onRemoveTodo }) => {
   return (
     <ul className='todo-list'>
       {filtered.map((todo) => (
@@ -22,14 +12,6 @@ const TodoList = ({
           onRemoveTodo={onRemoveTodo}
         />
       ))}
-      <TodoFilter
-        filtered={filtered}
-        status={status}
-        onShowAllTodos={onShowAllTodos}
-        onShowActiveTodos={onShowActiveTodos}
-        onShowCompletedTodos={onShowCompletedTodos}
-        onClearCompletedTodos={onClearCompletedTodos}
-      />
     </ul>
   );
 };

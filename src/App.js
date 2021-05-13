@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
 import TodoInput from './components/TodoInput/TodoInput';
 import TodoList from './components/TodoList/TodoList';
+import TodoFilters from './components/TodoFilters/TodoFilter';
 import './App.css';
 
 function App() {
@@ -169,6 +170,14 @@ function App() {
             onShowCompletedTodos={showCompletedTodos}
             onCompleteTodo={completeTodo}
             onRemoveTodo={removeTodo}
+            onClearCompletedTodos={clearCompletedTodos}
+          />
+          <TodoFilters
+            filtered={filtered}
+            status={status}
+            onShowAllTodos={showAllTodos}
+            onShowActiveTodos={showActiveTodos}
+            onShowCompletedTodos={showCompletedTodos}
             onClearCompletedTodos={clearCompletedTodos}
           />
         </div>
