@@ -56,7 +56,7 @@ function App() {
 
   // handle the todo input change
   function handleInputChange(e) {
-    setTodo(e.target.value.trim());
+    setTodo(e.target.value);
   }
 
   // handle when user submits inside the input
@@ -68,7 +68,7 @@ function App() {
         ...todos,
         {
           id: todos.length + 1,
-          text: todo,
+          text: todo.trim(),
           isCompleted: false,
           isActive: true,
         },
