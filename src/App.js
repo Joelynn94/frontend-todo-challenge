@@ -7,51 +7,39 @@ import TodoFilters from './components/TodoFilters/TodoFilter';
 import './App.css';
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [darkTheme, setDarkTheme] = useState(
+    () => localStorage.getItem('dark_theme') === 'true'
+  );
   const [todo, setTodo] = useState('');
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      return JSON.parse(savedTodos);
+    } else {
+      return [];
+    }
+  });
   const [status, setStatus] = useState('all');
   const [filtered, setFiltered] = useState([]);
 
   // useEffect to update the UI
   useEffect(() => {
-    filterHandler();
-    getLocalStorage();
-    saveLocalStorage();
-  }, [todos, status, theme]);
-
-  // save theme and todos to local storage
-  function saveLocalStorage() {
     localStorage.setItem('todos', JSON.stringify(todos));
-    localStorage.setItem('theme', JSON.stringify(theme));
-  }
-
-  // get theme and todos from local storage
-  function getLocalStorage() {
-    if (localStorage.getItem('todos') === null) {
-      localStorage.setItem('todos', JSON.stringify([]));
-    } else {
-      localStorage.setItem('todos', JSON.stringify(todos));
-    }
-
-    if (localStorage.getItem('theme') === null) {
-      localStorage.setItem('theme', JSON.stringify(''));
-    } else {
-      localStorage.setItem('theme', JSON.stringify(theme));
-    }
-  }
-
-  // add and remove light/dark class to the document body
-  function handleThemeChange() {
-    if (theme === 'light') {
-      setTheme('dark');
+    localStorage.setItem('dark_theme', darkTheme);
+    if (darkTheme) {
       document.body.classList.add('dark');
       document.body.classList.remove('light');
     } else {
-      setTheme('light');
       document.body.classList.add('light');
       document.body.classList.remove('dark');
     }
+    filterHandler();
+    // eslint-disable-next-line
+  }, [todos, status, darkTheme]);
+
+  // add and remove light/dark class to the document body
+  function handleThemeChange() {
+    setDarkTheme(!darkTheme);
   }
 
   // handle the todo input change
@@ -141,15 +129,24 @@ function App() {
       <div
         className='app-header'
         style={
-          theme === 'light'
-            ? { backgroundImage: 'url(/images/bg-desktop-light.jpg)' }
-            : { backgroundImage: 'url(/images/bg-desktop-dark.jpg)' }
+          darkTheme
+            ? {
+                background:
+                  'url(/images/bg-desktop-dark.jpg) center center/cover no-repeat',
+              }
+            : {
+                background:
+                  'url(/images/bg-desktop-light.jpg) center center/cover no-repeat',
+              }
         }
       >
         <div className='container'>
           <header className='todo-header'>
             <h1 className='heading'>TODO APP</h1>
-            <ThemeToggle theme={theme} onThemeChange={handleThemeChange} />
+            <ThemeToggle
+              darkTheme={darkTheme}
+              onThemeChange={handleThemeChange}
+            />
             <TodoInput
               onFormSubmit={handleFormSubmit}
               todo={todo}
