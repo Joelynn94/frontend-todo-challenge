@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 
 import ThemeToggle from './components/ThemeToggle/ThemeToggle';
-import TodoInput from './components/TodoInput/TodoInput';
+import AddTodoForm from './components/AddTodoForm/AddTodoForm';
 import TodoList from './components/TodoList/TodoList';
 import TodoFilters from './components/TodoFilters/TodoFilter';
 import './App.css';
+import EditTodoForm from './components/EditTodoForm/EditTodoForm';
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(
@@ -21,6 +22,9 @@ function App() {
   });
   const [status, setStatus] = useState('all');
   const [filtered, setFiltered] = useState([]);
+  // state for editing
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentTodo, setCurrentTodo] = useState({});
 
   // useEffect to update the UI
   useEffect(() => {
@@ -59,6 +63,7 @@ function App() {
           text: todo.trim(),
           isCompleted: false,
           isActive: true,
+          isEditing: false,
         },
       ]);
     }
@@ -124,6 +129,21 @@ function App() {
     }
   }
 
+  // function to handle when the edit icon button is clicked
+  function handleEditButtonClick(todo) {
+    setIsEditing(true);
+    setCurrentTodo({ ...todo });
+  }
+
+  // function to handle updating the todo
+  function handleUpdateTodo(id, updatedTodo) {
+    const updatedItem = todos.map((todo) => {
+      return todo.id === id ? updatedTodo : todo;
+    });
+    setIsEditing(false);
+    setTodos(updatedItem);
+  }
+
   return (
     <>
       <div
@@ -147,11 +167,20 @@ function App() {
               darkTheme={darkTheme}
               onThemeChange={handleThemeChange}
             />
-            <TodoInput
-              onFormSubmit={handleFormSubmit}
-              todo={todo}
-              onInputChange={handleInputChange}
-            />
+            {isEditing ? (
+              <EditTodoForm
+                currentTodo={currentTodo}
+                setCurrentTodo={setCurrentTodo}
+                onUpdateTodo={handleUpdateTodo}
+                setIsEditing={setIsEditing}
+              />
+            ) : (
+              <AddTodoForm
+                onFormSubmit={handleFormSubmit}
+                todo={todo}
+                onInputChange={handleInputChange}
+              />
+            )}
           </header>
         </div>
       </div>
@@ -161,12 +190,14 @@ function App() {
             todos={todos}
             filtered={filtered}
             status={status}
+            AddTodoFormValue={todo}
             onShowAllTodos={showAllTodos}
             onShowActiveTodos={showActiveTodos}
             onShowCompletedTodos={showCompletedTodos}
             onCompleteTodo={completeTodo}
             onRemoveTodo={removeTodo}
             onClearCompletedTodos={clearCompletedTodos}
+            onEditButtonClick={handleEditButtonClick}
           />
           <TodoFilters
             filtered={filtered}

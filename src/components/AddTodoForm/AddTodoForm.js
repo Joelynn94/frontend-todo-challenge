@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoInput = ({ todo, onInputChange, onFormSubmit }) => {
+const AddTodoForm = ({ todo, onInputChange, onFormSubmit }) => {
   return (
     <form className='todo-input' onSubmit={onFormSubmit}>
       <label htmlFor='todo'>
@@ -17,4 +17,4 @@ const TodoInput = ({ todo, onInputChange, onFormSubmit }) => {
   );
 };
 
-export default TodoInput;
+export default AddTodoForm;

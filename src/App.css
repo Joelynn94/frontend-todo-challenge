@@ -225,6 +225,54 @@ button {
   border: 1px solid #1f2133;
 }
 
+.edit-input {
+  grid-area: input;
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+
+.edit-input label {
+  display: flex;
+}
+
+.edit-input input {
+  width: 100%;
+  display: block;
+  padding: 20px 24px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #9495a5;
+  background-color: #fff;
+  border: 1px solid #e3e4f1;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.dark .edit-input input {
+  background-color: #25273d;
+  border: 1px solid #1f2133;
+}
+
+.btn-update {
+  margin-left: 5px;
+  background-color: #258c53;
+  color: #fff;
+}
+
+.btn-update:hover {
+  background-color: #7cba98;
+}
+
+.btn-cancel {
+  margin-left: 5px;
+  background-color: #ff293b;
+  color: #fff;
+}
+
+.btn-cancel:hover {
+  background-color: #ff6976;
+}
+
 .todo-btn {
   border-radius: 50%;
   height: 24px;
@@ -252,17 +300,25 @@ button {
   border: 1px solid #25273d;
 }
 
-.todo-delete {
+.todo-btn__container {
+  display: flex;
+  flex: 1 1;
+  justify-content: flex-end;
+}
+
+.todo-delete,
+.todo-edit {
   height: 24px;
   width: 24px;
   padding: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  flex: auto 1;
+  margin-left: 10px;
 }
 
-.todo-delete__x {
+.todo-delete__icon,
+.todo-edit__icon {
   display: grid;
   justify-content: center;
 }
