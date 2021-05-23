@@ -59,11 +59,10 @@ function App() {
       setTodos([
         ...todos,
         {
-          id: todos.length + 1,
+          id: new Date(),
           text: todo.trim(),
           isCompleted: false,
           isActive: true,
-          isEditing: false,
         },
       ]);
     }
@@ -176,8 +175,8 @@ function App() {
               />
             ) : (
               <AddTodoForm
-                onFormSubmit={handleFormSubmit}
                 todo={todo}
+                onFormSubmit={handleFormSubmit}
                 onInputChange={handleInputChange}
               />
             )}

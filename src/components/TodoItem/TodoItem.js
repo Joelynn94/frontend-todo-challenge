@@ -2,7 +2,6 @@ import React from 'react';
 
 const TodoItem = ({
   todo,
-  todoInputValue,
   onCompleteTodo,
   onRemoveTodo,
   onEditButtonClick,
